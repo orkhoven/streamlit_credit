@@ -277,7 +277,7 @@ def main() :
             feature_names = [i for i in data.columns if data[i].dtype in [np.int64, np.int64]]
             X = data[feature_names]
             train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=1)
-            pickle_in = open('model/LGBMClassifier.pkl', 'rb') 
+            pickle_in = open('model/model_adaboost.pkl', 'rb') 
             clf = pickle.load(pickle_in)
             my_model = RandomForestClassifier(random_state=0).fit(train_X, train_y)
             row_to_show = 5
