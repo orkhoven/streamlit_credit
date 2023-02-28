@@ -27,7 +27,7 @@ import shap  # package used to calculate Shap values
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import streamlit.components.v1 as components
-
+import requests
 
 def main() :
 
@@ -45,6 +45,16 @@ def main() :
         target = data.iloc[:, -1:]
 
         return data, sample, target, description
+    
+    
+
+    def predict(data):
+        url = "https://orkun-credit.onrender.com/"  # replace with your API endpoint
+        headers = {"Content-Type": "application/json"}
+        payload = data.to_json(orient="records")
+        response = requests.post(url, headers=headers, data=payload)
+        result = response.json()
+        return result
 
 
     def load_model():
